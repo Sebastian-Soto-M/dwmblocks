@@ -1,0 +1,11 @@
+#!/bin/sh
+#read -r -a  val <<< "$((xbacklight -get | bc -l))"
+read -r -a  val <<< "$(cat /sys/class/power_supply/BAT0/capacity)"
+if   [ $val -le 25 ]  ; then battery=" $val" ;
+elif [ $val -le 30 ]  ; then battery=" $val" ;
+elif [ $val -le 60 ]  ; then battery=" $val" ;
+elif [ $val -le 80 ]  ; then battery=" $val" ;
+elif [ $val -le 90 ]  ; then battery=" $val" ;
+elif [ $val -le 100 ] ; then battery=" $val" ;
+fi
+echo $battery
